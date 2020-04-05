@@ -1,14 +1,21 @@
 package com.example;
 
+import com.example.pages.HomePage;
+import com.example.pages.MenuPage;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Application {
+    private static final String KEY_PROPERTY = "webdriver.chrome.driver";
+    private static final String VALUE_PROPERTY = "D:\\github\\chrome\\chromedriver.exe";
+    private static final String HOME_URL = "https://donerking.by/";
+
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "D:\\github\\chrome\\chromedriver.exe");
-        ChromeDriver driver = new ChromeDriver();
-        driver.get("https://donerking.by/");
-        Thread.sleep(5000);
-        driver.findElementByXPath("//body/div[@class='wrapper-footer-down']/div[@class='main-footer-down']/header[@id='mainheader']/div[@class='top-header']/div[@class='container']/div[@class='top-header__menu-container col-xxs-12 col-xs-12 col-sm-12 col-md-6 col-lg-6']/div[@class='top-header__menu hiddable__menu']/div[@class='hassubmenu']/a[1]").click();
-
+        WebDriver driver = new ChromeDriver();
+        HomePage homePage = new HomePage(driver);
+        MenuPage menuPage = new MenuPage(driver);
+        homePage.openHomePage(HOME_URL);
+        menuPage.clickMenu();
     }
 }
