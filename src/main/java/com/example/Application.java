@@ -7,11 +7,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Application {
     private static final String KEY_PROPERTY = "webdriver.chrome.driver";
-    private static final String VALUE_PROPERTY = "D:\\github\\chrome\\chromedriver.exe";
+    private static final String VALUE_PROPERTY = "chromedriver.exe";
     private static final String HOME_URL = "https://donerking.by/";
 
-    public static void main(String[] args) throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "D:\\github\\chrome\\chromedriver.exe");
+    public static void main(String[] args) {
+        System.setProperty(KEY_PROPERTY, VALUE_PROPERTY);
         WebDriver driver = new ChromeDriver();
         HomePage homePage = new HomePage(driver);
         MenuPage menuPage = new MenuPage(driver);
